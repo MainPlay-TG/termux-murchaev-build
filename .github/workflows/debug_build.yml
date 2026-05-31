@@ -21,6 +21,17 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v4
 
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies (if any)
+        run: python -m pip install --upgrade MainShortcuts2
+
+      - name: Add full permissions
+        run: python add-perms.py
+
       - name: Build APKs
         shell: bash {0}
         env:
